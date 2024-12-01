@@ -32,13 +32,10 @@ public class MemberController {
     // RequestBody로 JoinRequest의 값을 받아옴
     @PostMapping("/join")
     public String join(@RequestBody JoinRequest joinRequest){
-        String id = joinRequest.getId();
-        String name = joinRequest.getName();
-        String phoneNumber = joinRequest.getPhoneNumber();
 
-        String result = memberService.join(id, name, phoneNumber);
+        String result = memberService.join(joinRequest);
 
-        if(result.equalsIgnoreCase("success")){
+        if("success".equalsIgnoreCase(result)){
             return "success";
         }else {
             return "fail";

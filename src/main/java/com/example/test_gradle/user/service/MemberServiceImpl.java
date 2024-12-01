@@ -1,5 +1,6 @@
 package com.example.test_gradle.user.service;
 
+import com.example.test_gradle.user.controller.dto.JoinRequest;
 import com.example.test_gradle.user.repository.MemberRepository;
 import com.example.test_gradle.user.repository.entity.Member;
 import lombok.RequiredArgsConstructor;
@@ -13,11 +14,11 @@ public class MemberServiceImpl implements MemberService{
     private final MemberRepository memberRepository;
 
     @Override
-    public String join(String id, String name, String phoneNumber) {
+    public String join(JoinRequest joinRequest) {
         Member member = Member.builder()
-                .id(id)
-                .name(name)
-                .phoneNumber(phoneNumber)
+                .id(joinRequest.getId())
+                .name(joinRequest.getName())
+                .phoneNumber(joinRequest.getPhoneNumber())
                 .build();
         memberRepository.save(member);
 
